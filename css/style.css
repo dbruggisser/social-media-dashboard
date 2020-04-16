@@ -1,6 +1,3 @@
-/* Importing the Inter font family */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
-
 /* Variables */
 :root {
   /* Light theme colors */
@@ -9,16 +6,18 @@
   --bg-card: hsl(227, 47%, 96%);
   --primary-text: hsl(230, 17%, 14%);
   --secondary-text: hsl(228, 12%, 44%);
+  --toggle: hsl(230, 22%, 74%);
   /* Colors to indicate change */
   --positive: hsl(163, 72%, 41%);
   --negative: hsl(356, 69%, 56%);
   /* Colors for the different social networks */
   --facebook: hsl(195, 100%, 50%);
   --twitter: hsl(203, 89%, 53%);
-  --instagram: hsl();
+  --instagram: linear-gradient(90deg, hsl(37, 97%, 70%) 0%, hsl(329, 70%, 58%) 100%);
   --youtube: hsl(348, 97%, 39%);
 }
 
+/* Light reset of common properties */
 * {
   margin: 0;
   padding: 0;
@@ -26,6 +25,7 @@
   font-size: 10px;
 }
 
+/* Page stylying starts here */
 body {
   font-family: 'Inter', sans-serif;
   color: var(--primary-text);
@@ -48,17 +48,68 @@ header {
 
 header h1 {
   font-size: 2.8rem;
+  font-weight: 700;
   margin-bottom: 4px;
 }
 
 header h3 {
   font-size: 1.4rem;
+  font-weight: 600;
   color: var(--secondary-text);
 }
 
 #dark-mode-flex {
   display: flex;
   align-items: center;
+  /* border: 1px solid pink; */
 }
 
 /* Code to write for the toggle */
+.switch {
+  margin-left: 16px;
+  position: relative;
+  width: 56px;
+  height: 28px;
+  /* border: 1px solid green; */
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.switch .slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: var(--toggle);
+  border-radius:14px;
+  /* border: 1px solid red; */
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 20px;
+  width: 20px;
+  top: 4px;
+  right: 4px;
+  background-color: var(--bg);
+  border-radius: 100%;
+  transition: all .4s ease;
+  /* border: 1px solid lime; */
+}
+
+input:checked + .slider {
+  background: linear-gradient(90deg, hsl(210, 78%, 56%) 0%, hsl(146, 68%, 55%) 100%);
+  transition: all .4s ease;
+}
+
+input:checked + .slider:before {
+  transform: translateX(-28px);
+  transition: all .4s ease;
+}
